@@ -1,0 +1,65 @@
+
+<nav class="bg-white dark:bg-gray-900 font-sans border-gray-200 border-b">
+
+    <div class="flex flex-wrap items-center justify-between mx-auto py-4 pl-6 pr-12">
+      
+      <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <span class="material-symbols-outlined">home</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Classmate</span>
+      </a>
+
+      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
+
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li>
+            <a href="/seating/" id="seating-link" class="navbar-item-unselected">Seating</a>
+          </li>
+          <li>
+            <a href="/jobs/" id="jobs-link" class="navbar-item-unselected">Jobs</a>
+          </li>
+          <li>
+            <a href="/lining_up" id="lining-up-link" class="navbar-item-unselected">Lining Up</a>
+          </li>
+          <div class="border-l"></div>
+          <li>
+            <a href="/lists/" id="term-dates-link" class="navbar-item-unselected">Lists</a>
+          </li>
+          <li>
+            <a href="/settings" id="settings-link" class="navbar-item-unselected">Settings</a>
+          </li>
+        </ul>
+      </div>
+      
+
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all navbar links
+      const navbarLinks = document.querySelectorAll('.navbar-item-unselected');
+  
+      // Event listener for each navbar link
+      navbarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+  
+          // Remove 'navbar-item-selected' class from all links
+          document.querySelectorAll('.navbar-item-selected').forEach(item => {
+            item.classList.remove('navbar-item-selected');
+            item.setAttribute('aria-current', '');
+          });
+  
+          // Add 'navbar-item-selected' class to the clicked link
+          link.classList.add('navbar-item-selected');
+          link.setAttribute('aria-current', 'page');
+  
+        });
+      });
+    });
+  </script>  

@@ -1,0 +1,351 @@
+/* ========================================================================== */
+/* colors */
+/* ========================================================================== */
+:root {
+    --color-primary: #558953;
+    --color-on-primary: #FFFFFF;
+    --color-secondary: #D09045;
+    --color-bg: #E8D6C4;
+    --color-text: #1f2937;
+    --color-hover-bg: #f3f4f6;
+  }
+  
+  .dark-theme {
+    --color-primary: #10B981;
+    --color-secondary: #ffffff;
+    --color-bg: #374151;
+    --color-text: #ffffff;
+    --color-hover-bg: #4b5563;
+  }
+  
+/* ========================================================================== */
+/* navbar */
+/* ========================================================================== */
+.navbar-item-unselected {
+    display: block;
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    color: var(--color-text);
+    border-radius: 0.375rem; /* rounded */
+  }
+  
+  .navbar-item-unselected:hover {
+    background-color: var(--color-hover-bg);
+  }
+  
+  /* Medium screens and up */
+  @media (min-width: 768px) {
+    .navbar-item-unselected {
+      padding: 0; /* md:p-0 */
+      border: none; /* md:border-0 */
+    }
+  
+    .navbar-item-unselected:hover {
+      background-color: transparent; /* md:hover:bg-transparent */
+      color: var(--color-primary);
+    }
+  }
+  
+  /* Dark mode */
+  .dark-theme .navbar-item-unselected {
+    color: var(--color-text);
+  }
+  
+  .dark-theme .navbar-item-unselected:hover {
+    color: var(--color-primary);
+    background-color: var(--color-hover-bg);
+  }
+  
+  .dark-theme .navbar-item-unselected:hover .md\:dark\:hover\:bg-transparent {
+    background-color: transparent; /* md:dark:hover:bg-transparent */
+  }
+  
+  .navbar-item-selected {
+    display: block;
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    border-radius: 0.375rem; /* rounded */
+  }
+  
+  /* Medium screens and up */
+  @media (min-width: 768px) {
+    .navbar-item-selected {
+      padding: 0; /* md:p-0 */
+      background-color: transparent; /* md:bg-transparent */
+      color: var(--color-primary);
+    }
+  }
+  
+  /* Dark mode */
+  .dark-theme .navbar-item-selected {
+    color: var(--color-secondary);
+  }
+  
+  .dark-theme .navbar-item-selected.md\:dark\:text-blue-500 {
+    color: var(--color-primary);
+  }
+  
+/* ========================================================================== */
+/* dropdown */
+/* ========================================================================== */
+
+/* dropdown button */
+.cm-dropdown-button {
+  color: #ffffff; /* text-white */
+  width: 100%; /* w-full */
+  background-color: #1d4ed8; /* bg-blue-700 */
+  font-weight: 500; /* font-medium */
+  border-radius: 0.125rem; /* rounded-sm */
+  font-size: 0.875rem; /* text-sm */
+  padding: 0.625rem 1.25rem; /* px-5 py-2.5 */
+  text-align: center; /* text-center */
+  display: inline-flex; /* inline-flex */
+  align-items: center; /* items-center */
+}
+
+.cm-dropdown-button:hover {
+  background-color: #1e40af; /* hover:bg-blue-800 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .cm-dropdown-button {
+      background-color: #2563eb; /* dark:bg-blue-600 */
+  }
+  .cm-dropdown-button:hover {
+      background-color: #1d4ed8; /* dark:hover:bg-blue-700 */
+  }
+}
+
+/* dropdown item  */
+.cm-dropdown-item {
+  display: block;
+  padding-left: 1rem; /* Equivalent to px-4 in Tailwind */
+  padding-right: 1rem; /* Equivalent to px-4 in Tailwind */
+  padding-top: 0.5rem; /* Equivalent to py-2 in Tailwind */
+  padding-bottom: 0.5rem; /* Equivalent to py-2 in Tailwind */
+}
+
+.cm-dropdown-item:hover {
+  background-color: #f3f4f6; /* Equivalent to bg-gray-100 in Tailwind */
+}
+
+.cm-dropdown-item:hover.dark {
+  background-color: #1a202c; /* Equivalent to dark:bg-gray-600 in Tailwind */
+  color: #ffffff; /* Equivalent to dark:text-white in Tailwind */
+}
+
+
+/* ========================================================================== */
+/* buttons */
+/* ========================================================================== */
+
+.delete-button-sm {
+  background-color: #f05959; /* Replace with your desired color */
+  color: white;
+  border-radius: 6px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.delete-button-sm.hidden {
+  display: none;
+}
+
+.edit-button-sm {
+  background-color: #2196f3; /* Replace with your desired color */
+  color: white;
+  border-radius: 6px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer; 
+}
+
+.edit-button-sm.hidden {
+  display: none;
+}
+
+.add-button {
+  background-color: #22c55e; /* Replace with your desired color */
+  color: white;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  padding: 6px;
+  margin-right: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cm-red-button {
+  background-color: #EF4444; /* Replace with the exact hex code if needed */
+  color: white;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cm-green-button {
+  background-color: #10b981; /* Replace with the exact hex code if needed */
+  color: white;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cm-list-item {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  margin: 2px;
+  width: 256px; /* Adjust width as needed */
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.cm-list-item-focus {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  margin: 2px;
+  width: 256px; /* Adjust width as needed */
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid transparent;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.cm-list-item:hover {
+  border-color: #ccc; /* Adjust color as needed */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ========================================================================== */
+/* modal  */
+/* ========================================================================== */
+
+/***** MODAL DIALOG ****/
+.modal {
+	/* Underlay covers entire screen. */
+	position: fixed;
+	top:0px;
+	bottom: 0px;
+	left:0px;
+	right:0px;
+	background-color:rgba(0,0,0,0.5);
+	z-index:1000;
+
+	/* Flexbox centers the .modal-content vertically and horizontally */
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+
+	/* Animate when opening */
+	animation-name: fadeIn;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+.modal > .modal-underlay {
+	/* underlay takes up the entire viewport. This is only
+	required if you want to click to dismiss the popup */
+	position: absolute;
+	z-index: -1;
+	top:0px;
+	bottom:0px;
+	left: 0px;
+	right: 0px;
+}
+
+.modal > .modal-content {
+	/* Position visible dialog near the top of the window */
+	margin-top:10vh;
+
+	/* Sizing for visible dialog */
+	width:80%;
+	max-width:600px;
+
+	/* Display properties for visible dialog*/
+	border:solid 1px #999;
+	border-radius:8px;
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
+	background-color:white;
+	padding:20px;
+
+	/* Animate when opening */
+	animation-name:zoomIn;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+.modal.closing {
+	/* Animate when closing */
+	animation-name: fadeOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+.modal.closing > .modal-content {
+	/* Animate when closing */
+	animation-name: zoomOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@keyframes zoomIn {
+	0% {transform: scale(0.9);}
+	100% {transform: scale(1);}
+}
+
+@keyframes zoomOut {
+	0% {transform: scale(1);}
+	100% {transform: scale(0.9);}
+}
+
+
+/* ========================================================================== */
+/* layouts */
+/* ========================================================================== */
+.cm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  grid-gap: 10px;
+}
+

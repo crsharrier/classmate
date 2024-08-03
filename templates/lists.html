@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block infobar %}
+    Lists
+{% endblock %}
+
+
+{% block main_content %}
+
+<div id="accordion-collapse" data-accordion="collapse" class="flex flex-row justify-between">
+
+    <div class="mr-4 grow">
+        {% component 'accordion_slot' index=1 title='Class Groups' entity='class' iterable=classes%} {% endcomponent %}
+        
+        {% component 'accordion_slot' index=2 title='Students' entity='student' iterable=students%} {% endcomponent %}
+        
+        {% component 'accordion_slot' index=3 title='Jobs' entity='job' iterable=jobs%} {% endcomponent %}
+    </div>
+    
+    <div>
+        {% component 'term_period_widget' index=4 %} {% endcomponent %}
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+

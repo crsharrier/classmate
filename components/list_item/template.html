@@ -1,0 +1,22 @@
+    <div class="cm-list-item">
+
+        <button type="button" 
+            class="list-item-delete-button delete-button-sm hidden">
+            <span class="material-symbols-outlined">delete</span>
+        </button>
+
+        {% if can_edit %}
+        <button type="button"
+            hx-get="/crud_dialog?action=edit&entity={{ entity }}&pk={{ pk }}"
+            hx-target="body"
+            hx-swap="beforeend"
+            class="list-item-edit-button edit-button-sm hidden mr-2">
+            <span class="material-symbols-outlined">edit</span>
+        </button>
+        {% endif %}
+
+        <div class="text-gray-500"> 
+            {{ pk }} 
+        </div>
+
+    </div>

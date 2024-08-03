@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% include '_scripts.html' %}
+
+{% block content %}
+
+<div class="h-screen w-full">
+
+    <!-- top navbar -->
+    {% include 'navbar.html' %}
+    
+    
+    <!-- main content -->
+    <div class="w-full h-full pt-2 pl-4">
+
+        <!-- top infobar -->
+        <div class="mb-4 font-sans flex flex-row text-gray-500 text-2xl">
+            {% block infobar %}{% endblock %}
+        </div>
+        
+
+        {% block main_content %}
+
+            {% component 'classes_widget' %} {% endcomponent %}
+    
+        {% endblock %}
+
+    </div>
+        
+    
+</div>
+{% endblock %}
+
