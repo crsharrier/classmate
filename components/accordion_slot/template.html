@@ -1,55 +1,77 @@
 <!-- Accordion Header  -->
-<h2 id="accordion-collapse-heading-{{ index }}">
-<div class="accordion-header-div w-full mt-4 flex flex-row">
+<div id="accordion-{{ index }}"
+    {% if always_open %}
+        data-accordion="open"
+    {% else %}
+        data-accordion="collapse"
+    {% endif %}
+    >
 
-    <div type="button" 
-        class="accordion-header-button cursor-pointer
-            flex items-center justify-between w-full min-h-16 p-3 
-            font-medium text-gray-500 border border-gray-200 rounded-lg 
-            focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" 
-        data-accordion-target="#accordion-collapse-body-{{ index }}" 
-        aria-hidden="true"
-        aria-controls="accordion-collapse-body-{{ index }}">
-        
-        <span>{{ title }}</span>
+    <h2 id="accordion-heading-{{ index }}">
+        <div class="accordion-header-div w-full mt-4 flex flex-row">
 
-        <div class="flex flex-row items-center gap-1">
+            <div type="button" 
+                class="accordion-header-button cursor-pointer
+                    flex items-center justify-between w-full min-h-16 p-3 
+                    font-medium text-gray-500 border border-gray-200 rounded-lg 
+                    focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3"
+                    
+                {% if not always_open %}
+                    data-accordion-target="#accordion-body-{{ index }}" 
+                    aria-controls="accordion-body-{{ index }}"
+                    aria-hidden="true"
+                {% endif %}
+                >
+                
+                <span>{{ title }}</span>
 
-            <div class="accordion-buttons-container 
-                flex flex-row items-center gap-1 
-                hidden
-                ">
+                <div class="flex flex-row items-center gap-1">
 
-                <!-- Add Button -->
-                <button type="button" 
-                    hx-get="/crud_dialog?action=add&entity={{ entity }}"
-                    hx-target="body"
-                    hx-swap="beforeend"
-                    class="lists-add-button add-button">
-                    <span class="material-symbols-outlined">add</span>
-                </button>
+                    <div class="flex flex-row items-center gap-1 
+                        {% if not always_open %}
+                            hidden
+                        {% endif %}
+                        ">
+
+                        <!-- Add Button -->
+                        <button type="button" 
+                            hx-get="/crud_dialog?action=add&entity={{ entity }}"
+                            hx-target="body"
+                            hx-swap="beforeend"
+                            class="add-button">
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+
+                    </div>
+                    
+                    {% if not always_open %}
+                    <!-- Chevron Shape -->
+                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                    </svg>
+                    {% endif %}
+
+                </div>
 
             </div>
-
-            <!-- Chevron Shape -->
-            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-            </svg>
-
+            
         </div>
-
-    </div>
-    
+    </h2>
 </div>
-</h2>
 
 <!-- Accordion Body  -->
-<div id="accordion-collapse-body-{{ index }}" class="accordion-body hidden" aria-labelledby="accordion-collapse-heading-{{ index }}">
-  <div class="p-1 border border-b-0 border-blue-200 cm-grid w-full">
+<div id="accordion-body-{{ index }}" 
+    class="accordion-body 
+        {% if not always_open %}
+            hidden
+        {% endif %}
+        " 
+    aria-labelledby="accordion-heading-{{ index }}">
+  <div class="p-1 border border-t-0 border-blue-200 rounded-b-lg cm-grid w-full">
     {% if iterable %}
 
-        {% for pk in iterable %}
-            {% component 'list_item' pk=pk entity=entity %} {% endcomponent %}
+        {% for item in iterable %}
+            {% component 'list_item' item_dict=item entity=entity %} {% endcomponent %}
         {% endfor %}
 
     {% else %} 

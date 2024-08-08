@@ -1,6 +1,9 @@
     <div class="cm-list-item">
 
         <button type="button" 
+            hx-get="/crud_dialog?action=delete&entity={{ entity }}"
+            hx-target="body"
+            hx-swap="beforeend"
             class="list-item-delete-button delete-button-sm hidden">
             <span class="material-symbols-outlined">delete</span>
         </button>
@@ -16,7 +19,7 @@
         {% endif %}
 
         <div class="text-gray-500"> 
-            {{ pk }} 
+            {{ name }} 
         </div>
 
     </div>

@@ -11,7 +11,21 @@ def home_view(request: HttpRequest):
     return TemplateResponse(request, 'index.html', context)
 
 def seating_view(request: HttpRequest):
-    context = {}
+    desks = [
+        {'position': [50, 50], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [250, 50], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [450, 50], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [650, 50], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [50, 200], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [250, 200], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [450, 200], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [650, 200], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [50, 350], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [250, 350], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [450, 350], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+        {'position': [650, 350], 'rotation': 0, 'student_1': 'student 1', 'student_2': 'student 2'},
+    ]
+    context = {'desks': desks}
     return TemplateResponse(request, 'seating.html', context)
 
 def jobs_view(request: HttpRequest):
@@ -24,10 +38,10 @@ def lining_up_view(request: HttpRequest):
 
 def lists_view(request: HttpRequest):      
     context = {
-        'classes': [cl.class_name for cl in Class.objects.all()],
-        'students': [st.student_name for st in Student.objects.all()],
-        'jobs': [jb.job_name for jb in Job.objects.all()],
-        'term_periods': [tp for tp in TermPeriod.objects.all()]
+        'classes': [{'pk': cl.id, 'name': cl.class_name} for cl in Class.objects.all()],
+        'students': [{'pk': st.id, 'name': st.student_name} for st in Student.objects.all()],
+        'jobs': [{'pk': jb.id, 'name': jb.job_name} for jb in Job.objects.all()],
+        'term_periods': [{'pk': tp.week_commencing, 'name': tp.period_name} for tp in TermPeriod.objects.all()]
     }
     return TemplateResponse(request, 'lists.html', context)
 
@@ -43,12 +57,19 @@ def crud_dialog(request: HttpRequest):
     if request.method == 'POST':
         entity = request.GET.get('entity')
         action = request.GET.get('action')
+
         form = forms_dict.get(entity)
         filled_form: ModelForm = form(request.POST)
         if filled_form.is_valid():
             filled_form.save()
             return JsonResponse({'message': 'Entity successfully saved'})
-        
+            
+    
+    elif request.method == 'DELETE':
+
+        return JsonResponse({'message': 'Entity successfully deleted'})
+            
+
     elif request.method == 'GET':
         action = request.GET.get('action')
         entity = request.GET.get('entity')

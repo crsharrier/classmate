@@ -5,9 +5,10 @@ from django.apps import apps
 class ListItem(component.Component):
     template_name = "template.html"
 
-    def get_context_data(self, pk: str, entity: str, can_edit: bool=True):        
+    def get_context_data(self, item_dict: dict, entity: str, can_edit: bool=True):        
         return {
-            'pk': pk,
+            'pk': item_dict['pk'],
+            'name': item_dict['name'],
             'entity': entity,
             'can_edit': can_edit
         }

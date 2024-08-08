@@ -10,12 +10,15 @@ class AccordionSlot(component.Component):
                          title: str,
                          entity: str,
                          iterable: list,
-                         nested_accordion = None):
+                         always_open = False,
+                         nested_accordion = None,
+                         ):
         return {
             'index': index,
             'title': title,
             'entity': entity,
             'iterable': iterable,
+            'always_open': always_open,
             'nested_accordion': nested_accordion
         }
 
