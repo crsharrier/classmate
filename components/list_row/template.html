@@ -1,0 +1,15 @@
+    <div class="cm-list-item"
+        hx-get="{{ hx_get }}?pk={{ pk }}&entity={{ entity }}"
+        hx-target="{{ hx_target }}">
+        
+        <div type="button"
+            class="flex flex-row justify-between">
+            {% for item in info %}
+            <div class="text-gray-500 ml-6"> 
+                {{ item }} 
+            </div>
+            {% endfor %}
+        </div>
+      
+
+    </div>

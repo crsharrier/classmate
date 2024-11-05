@@ -1,0 +1,62 @@
+<!-- Accordion Header  -->
+<div id="accordion-{{ index }}">
+
+    <h2 id="accordion-heading-{{ index }}">
+        <div class="accordion-header-div w-full flex flex-row">
+
+            <div type="button" 
+                class="accordion-header-button
+                    flex items-center justify-between w-full min-h-16 p-3 gap-3
+                    font-medium text-gray-500 border border-gray-200 rounded-lg"
+                    
+                {% if not always_open %}
+                    data-accordion-target="#accordion-body-{{ index }}" 
+                    aria-controls="accordion-body-{{ index }}"
+                    aria-hidden="true"
+                {% endif %}
+                >
+                
+                <span>{{ title }}</span>
+
+                <div class="flex flex-row items-center gap-1">
+
+                    <div class="flex flex-row items-center gap-1">
+                        
+                        {% if can_add %}
+                            <!-- Add Button -->
+                            <button type="button" 
+                                hx-get="/crud_dialog?action=add&entity={{ entity }}"
+                                hx-target="body"
+                                hx-swap="beforeend"
+                                class="add-button">
+                                <span class="material-symbols-outlined">add</span>
+                            </button>
+                        {% endif %}
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
+            
+        </div>
+    </h2>
+</div>
+
+
+<div class="cm-list-body">
+{% if iterable %}
+
+    {% for item in iterable %}
+        {% component 'list_row' pk=item.pk info=item.info entity=entity hx_get=hx_get hx_target=hx_target %} {% endcomponent %}
+    {% endfor %}
+
+{% else %} 
+
+    <div class="mb-4 text-gray-500 dark:text-gray-400"> 
+        No {{ title }} added yet!
+    </div>
+
+{% endif %}
+</div>

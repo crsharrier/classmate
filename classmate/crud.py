@@ -1,5 +1,6 @@
 from django.http import HttpRequest, JsonResponse
-from classmate.models import Student, Class, Job
+from classmate.models import Student
+
 
 def add_student(request: HttpRequest):
     new_student_name = request.GET.get('new_student_name')

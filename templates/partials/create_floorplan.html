@@ -1,0 +1,31 @@
+{% load static %}
+<div class="flex flex-col justify-between">
+    <div class="mb-4 flex flex-row ">
+        
+        <div class="font-sans text-gray-500 text-xl mr-12">
+            Create New Floorplan
+        </div> 
+
+        <!-- Add Button -->
+        <button type="button" 
+        hx-get="/crud_dialog?action=add&entity={{ entity }}"
+        hx-target="body"
+        hx-swap="beforeend"
+        class="add-button">
+        <span class="material-symbols-outlined">save</span>
+
+    </button>
+    </div>
+
+    <canvas id="createFloorplanCanvas" 
+        width="1080" 
+        height="720"
+        class="border border-gray-300"></canvas>
+</div>
+
+<!-- Pass desks data from Django context to JavaScript -->
+<script type="text/javascript">
+    var desksData = {{ desks|safe }};
+</script>
+
+<script type="text/paperscript" canvas="createFloorplanCanvas" src="{% static 'js/seatingCreateLayout.js' %}"></script>

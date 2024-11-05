@@ -7,17 +7,32 @@
 
 {% block main_content %}
 
-<canvas id="floorPlanCanvas" 
-    width="1080" 
-    height="720"
-    class="border border-gray-300"></canvas>
+<div class="flex flex-row h-full" style="padding-left: 4rem;">
+    <div class="w-96 flex flex-col">
 
-<!-- Pass desks data from Django context to JavaScript -->
-<script type="text/javascript">
-    var desksData = {{ desks|safe }};
-</script>
+        <div style="padding-bottom: 2rem;">
+            {% component 'scrollable_list' index=1 title='Choose a class:' entity='class' iterable=classes hx_get="/seating_layout" hx_target="#seatingBody"%} {% endcomponent %}
+        </div>
 
-<script type="text/paperscript" canvas="floorPlanCanvas" src="{% static 'js/seatingCanvas.js' %}"></script>
+        {% component 'scrollable_list' index=1 title='Choose a week:' entity='period' iterable=term_periods hx_get="/seating_layout" hx_target="#seatingBody"%} {% endcomponent %}
+    </div>
 
+    <div id="seatingBody" class="border rounded-lg h-full p-4">
+        <div class="text-lg text-gray-600">Select Layout</div>
+
+        {% include "partials/create_floorplan.html" %}
+    </div>
+
+</div>
+
+
+<style>
+
+#seatingBody {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex-grow: 1;
+}
+</style>
 
 {% endblock %}

@@ -39,5 +39,6 @@ urlpatterns = [
 
     # partials
     path('crud_dialog', views.crud_dialog),
+    path('seating_layout', views.seating_layout),
 
 ]

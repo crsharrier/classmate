@@ -17,6 +17,7 @@
     --color-text: #ffffff;
     --color-hover-bg: #4b5563;
   }
+
   
 /* ========================================================================== */
 /* navbar */
@@ -182,7 +183,8 @@
 .add-button {
   background-color: #22c55e; /* Replace with your desired color */
   color: white;
-  aspect-ratio: 1;
+  max-height: 36px;
+  min-width: 36px;
   border-radius: 8px;
   padding: 6px;
   margin-right: 12px;
@@ -212,19 +214,22 @@
   cursor: pointer;
 }
 
+
+/* ========================================================================== */
+/* Lists and accordions  */
+/* ========================================================================== */
 .cm-list-item {
   display: flex;
+  position: relative;
   flex-direction: row;
   gap: 2px;
   align-items: center;
-  margin: 2px;
-  width: 256px; /* Adjust width as needed */
-  border-radius: 8px;
+  margin: 4px;
   padding: 2px;
+  border-radius: 8px;
   border: 1px solid transparent;
   cursor: pointer;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  margin-bottom: 4px;
 }
 
 .cm-list-item-focus {
@@ -232,21 +237,44 @@
   flex-direction: row;
   gap: 2px;
   align-items: center;
-  margin: 2px;
-  width: 256px; /* Adjust width as needed */
-  border-radius: 8px;
+  margin: 4px;
   padding: 2px;
+  padding: 2px;
+  border-radius: 8px;
   border: 1px solid transparent;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  border-color: #ccc; /* Adjust color as needed */
+  margin-bottom: 4px;
 }
 
 .cm-list-item:hover {
   border-color: #ccc; /* Adjust color as needed */
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 2px;
 }
 
+.button-container {
+  position: absolute;
+  left: 18px; 
+}
+
+.list-item-delete-button,
+.list-item-edit-button {
+    position: absolute;
+}
+
+.list-item-edit-button {
+    left: 28px; /* Adjust as necessary to position the edit button */
+}
+
+.cm-list-body {
+  padding: 0.25rem; /* p-1 */
+  border-width: 1px; /* border */
+  border-top-width: 0; /* border-t-0 */
+  border-color: #ccc; 
+  border-radius: 0 0 0.5rem 0.5rem; /* rounded-b-lg */
+  width: 100%; /* w-full */
+  overflow-y: auto;
+  max-height: 50vh;
+}
 /* ========================================================================== */
 /* modal  */
 /* ========================================================================== */

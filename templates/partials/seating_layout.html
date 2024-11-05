@@ -1,0 +1,41 @@
+<div class="text-lg text-gray-600 flex flex-col">
+    <div>
+        class: <span class="text-xl" style="color: var(--color-primary)">{{class_name}}</span>
+    </div>
+
+    {% if period_pk %}
+    <div>
+        period: 
+        <span class="text-xl" style="color: var(--color-primary)">
+            {{ period_name }}
+        </span> commencing 
+        <span class="text-xl" style="color: var(--color-primary)">
+            {{ period_pk }}
+        </span>
+    </div>
+    {% endif %}
+
+    <div class="mt-4">
+
+        {% if seating_layout %}
+            FOUND SEATING LAYOUT {{ seating_layout }}
+
+        {% else %}
+        <div class="flex flex-row w-full justify-center items-center">
+
+            <div class="mr-2"> NO SEATING LAYOUT FOUND </div>
+            <!-- Add Button -->
+            <button type="button" 
+
+                class="add-button">
+                <span class="mr-2"> Assign Layout </span>
+                <span class="material-symbols-outlined">add</span>
+            </button>
+
+        </div>
+        
+        {% endif %}
+
+    </div>
+   
+</div>
